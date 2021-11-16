@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="05a23636-bce9-4858-a609-6731f7f3f1ba" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/server/utils/des.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/api/v1/core/authority.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/api/v1/core/authority.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README-en.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/api/v1/core/context.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/api/v1/core/context.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/api/v1/core/enter.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/api/v1/core/enter.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/api/v1/system/enter.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/api/v1/system/enter.go" afterDir="false" />
