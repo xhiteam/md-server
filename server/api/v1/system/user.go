@@ -22,7 +22,7 @@ type BaseApi struct {
 // @Router /base/login [post]
 func (b *BaseApi) Login(c *gin.Context) {
 	var l request.Login
-	_ = c.ShouldBindJSON(&l)
+	_ = c.ShouldBind(&l)
 	if err := utils.Verify(l, utils.LoginVerify); err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
@@ -40,8 +40,10 @@ func (b *BaseApi) Login(c *gin.Context) {
 func (b *BaseApi) tokenNext(c *gin.Context, user table.User) {
 	j := &utils.JWT{SigningKey: []byte(global.MD_CONFIG.JWT.SigningKey)} // 唯一签名
 	claims := j.CreateClaims(request.BaseClaims{
-		UserId:       user.ID,
+		ID: user.ID,
 	})
+
+	global.MD_LOG.Info("login",zap.Any("userid",user.ID))
 	token, err := j.CreateToken(claims)
 	if err != nil {
 		global.MD_LOG.Error("获取token失败!", zap.Any("err", err))
@@ -49,7 +51,7 @@ func (b *BaseApi) tokenNext(c *gin.Context, user table.User) {
 		return
 	}
 	response.OkWithDetailed(response.LoginResponse{
-		User:      user,
+		User:      user.Username,
 		Token:     token,
 		ExpiresAt: claims.StandardClaims.ExpiresAt * 1000,
 	}, "登录成功", c)
@@ -67,18 +69,9 @@ func (b *BaseApi) tokenNext(c *gin.Context, user table.User) {
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"删除成功"}"
 // @Router /user/deleteUser [delete]
 func (b *BaseApi) DeleteUser(c *gin.Context) {
-	var reqId request.UID
-	_ = c.ShouldBindJSON(&reqId)
-	if err := utils.Verify(reqId, utils.CatalogIdVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
-		return
-	}
-	jwtId := utils.GetUserID(c)
-	if jwtId == reqId.UserId {
-		response.FailWithMessage("删除失败, 自杀失败", c)
-		return
-	}
-	if err := userService.DeleteUser(reqId); err != nil {
+	userId := utils.GetUserID(c)
+	uid := request.UID{UserId: userId}
+	if err := userService.DeleteUser(uid); err != nil {
 		global.MD_LOG.Error("删除失败!", zap.Any("err", err))
 		response.FailWithMessage("删除失败", c)
 	} else {

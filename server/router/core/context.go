@@ -13,13 +13,9 @@ func (s *ContextRouter) InitContextRouter(Router *gin.RouterGroup) {
 	contextRouterApi := v1.ApiGroupApp.CoreApiGroup.ContextApi
 	catalogRouter :=contextRouter.Group("catalog")
 	documentRouter :=contextRouter.Group("document")
-	{
-		contextRouter.GET("/:fatherCatalogId",contextRouterApi.GetContextsInfo)
-	}
 
 	{
 		catalogRouter.GET("/:catalogName/:page/:pageSize",contextRouterApi.GetCatalogsInfoByName)
-		catalogRouter.GET("/:catalogName/:page/:pageSize/:desc",contextRouterApi.GetCatalogsInfoByName)
 
 		catalogRouter.POST("/:fatherCatalogId/:catalogName",contextRouterApi.CreateCatalog)
 		catalogRouter.PUT("/:contextId/:newName",contextRouterApi.UpdateContextName)
@@ -28,8 +24,12 @@ func (s *ContextRouter) InitContextRouter(Router *gin.RouterGroup) {
 
 	{
        documentRouter.GET("/:documentId",contextRouterApi.GetContentById)
-       documentRouter.POST("/:fatherCatalogId/:contextName",contextRouterApi.CreateDocument)
+       documentRouter.POST("/:fatherCatalogId/:documentName",contextRouterApi.CreateDocument)
        documentRouter.PUT("/:contextId/:newName",contextRouterApi.UpdateContextName)
        documentRouter.DELETE("/:documentId",contextRouterApi.DeleteDocument)
+	}
+	{
+		contextRouter.GET("/:fatherCatalogId",contextRouterApi.GetContextsInfo)
+		contextRouter.GET("/",contextRouterApi.GetContextsInfo)
 	}
 }

@@ -4,8 +4,8 @@ var (
 	CreateContextLinkVerify = Rules{"DocumentId": {NotEmpty()}, "Permission": {NotEmpty()}}
 	GetContextByLinkVerify  = Rules{"ContextLink": {NotEmpty()}}
 
-	CreateCatalogVerify  = Rules{"FatherCatalogId": {NotEmpty()}, "CatalogName": {NotEmpty()}}
-	CreateDocumentVerify = Rules{"FatherCatalogId": {NotEmpty()}, "DocumentName": {NotEmpty()},
+	CreateCatalogVerify  = Rules{ "CatalogName": {NotEmpty()}}
+	CreateDocumentVerify = Rules{ "DocumentName": {NotEmpty()},
 		"Content": {NotEmpty()}}
 
 	CatalogIdVerify  = Rules{"CatalogId": {NotEmpty()}}
@@ -15,7 +15,7 @@ var (
 	UpdateDocumentContentVerify = Rules{"DocumentId": {NotEmpty()}, "NewContent": {NotEmpty()}}
 
 	GetCatalogsInfoByNameVerify = Rules{"CatalogName": {NotEmpty()}, "Page": {NotEmpty()}, "PageSize": {NotEmpty()}}
-	GetContextsInfoVerify       = Rules{"UID": {NotEmpty()}, "FatherCatalogId": {NotEmpty()}, "Page": {NotEmpty()}, "PageSize": {NotEmpty()}}
+	GetContextsInfoVerify       = Rules{"UID": {NotEmpty()},"Page": {NotEmpty()}, "PageSize": {NotEmpty()}}
 
 	LoginVerify          = Rules{"Username": {NotEmpty()}}
 	UserIdVerify          = Rules{"UID": {NotEmpty()}}

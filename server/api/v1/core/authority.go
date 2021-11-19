@@ -14,13 +14,15 @@ type AuthorityApi struct {
 
 
 func (a *AuthorityApi) CreateContextLink(c *gin.Context) {
-	var link request.CreateContextLinkReq
-	_ = c.ShouldBindJSON(&link)
-	if err := utils.Verify(link, utils.CreateContextLinkVerify); err != nil {
+	var req request.CreateContextLinkReq
+	_ = c.ShouldBindUri(&req)
+	uid,_:=c.Get("userId")
+	req.UserId=uid.(uint)
+	if err := utils.Verify(req, utils.CreateContextLinkVerify); err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-	if err, contextLink := AuthorityService.CreateContextLink(link); err != nil {
+	if err, contextLink := AuthorityService.CreateContextLink(req); err != nil {
 		global.MD_LOG.Error("分享链接创建失败!", zap.Any("err", err))
 		response.FailWithMessage("分享链接创建失败"+err.Error(), c)
 	} else {
@@ -31,7 +33,9 @@ func (a *AuthorityApi) CreateContextLink(c *gin.Context) {
 
 func (a *AuthorityApi) GetContextByLink(c *gin.Context) {
 	var req request.GetContextByLinkReq
-	_ = c.ShouldBindJSON(&req)
+	_ = c.ShouldBindUri(&req)
+	uid,_:=c.Get("userId")
+	req.UserId=uid.(uint)
 	if err := utils.Verify(req, utils.GetContextByLinkVerify); err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return

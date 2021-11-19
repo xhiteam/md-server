@@ -4,12 +4,12 @@ package request
 
 type CreateContextLinkReq struct {
 	UID
-	ContextId uint `json:"contextId"`
-	Permission string `json:"permission"`
+	ContextId uint `uri:"contextId"`
+	Permission string `uri:"permission"`
 }
 
 type GetContextByLinkReq struct {
 	UID
-	ContextLink string `json:"contextLink"`
+	ContextLink string `uri:"contextLink"`
 }
 

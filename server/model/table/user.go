@@ -6,5 +6,5 @@ import (
 
 type User struct {
 	global.GVA_MODEL
-	Username string `json:"userName" gorm:"index;unique;not null"`
+	Username string `json:"username" gorm:"index;unique;not null"`
 }

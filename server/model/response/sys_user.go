@@ -9,7 +9,7 @@ type SysUserResponse struct {
 }
 
 type LoginResponse struct {
-	User      table.User `json:"user"`
-	Token     string     `json:"token"`
-	ExpiresAt int64      `json:"expiresAt"`
+	User      string `json:"user"`
+	Token     string `json:"token"`
+	ExpiresAt int64  `json:"expiresAt"`
 }

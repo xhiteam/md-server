@@ -3,12 +3,12 @@ package internal
 import (
 	"context"
 	"fmt"
+	"github.com/kaijyin/md-server/server/global"
 	"io/ioutil"
 	"log"
 	"os"
 	"time"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/utils"
 )
@@ -127,8 +127,8 @@ func (c *_logger) Trace(ctx context.Context, begin time.Time, fc func() (string,
 }
 
 func (c *_logger) Printf(message string, data ...interface{}) {
-	if global.GVA_CONFIG.Mysql.LogZap {
-		global.GVA_LOG.Info(fmt.Sprintf(message, data...))
+	if global.MD_CONFIG.Mysql.LogZap {
+		global.MD_LOG.Info(fmt.Sprintf(message, data...))
 	} else {
 		c.Writer.Printf(message, data...)
 	}

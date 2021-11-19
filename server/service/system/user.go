@@ -13,9 +13,8 @@ type UserService struct {
 
 
 func (userService *UserService) Login(u *table.User) (err error, userInter *table.User) {
-	var user table.User
-	global.MD_DB.Create(&u)
-	return err, &user
+	err=global.MD_DB.Where("username = ?",u.Username).FirstOrCreate(&u).Error
+	return err, u
 }
 
 func (userService *UserService) DeleteUser(req request.UID) (err error) {

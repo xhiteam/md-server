@@ -26,7 +26,7 @@ redis:
 # system configuration
 system:
   env: 'public'
-  ip-addr: '127.0.0.1'
+  domain-name: '127.0.0.1'
   port: 8888
   db-type: 'mysql'
 
@@ -34,15 +34,15 @@ system:
 
 # mysql connect configuration
 mysql:
-  path: ''
-  config: ''
-  db-name: ''
-  username: ''
-  password: ''
+  path: '127.0.0.1:3306'
+  config: 'charset=utf8mb4&parseTime=True&loc=Local'
+  db-name: 'md_server'
+  username: 'root'
+  password: 'root'
   max-idle-conns: 10
   max-open-conns: 100
-  log-mode: ""
-  log-zap: false
+  log-mode: "info"
+  log-zap: true
 
 
 

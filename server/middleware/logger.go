@@ -82,6 +82,6 @@ func DefaultLogger() gin.HandlerFunc {
 			v, _ := json.Marshal(layout)
 			fmt.Println(string(v))
 		},
-		Source: "GVA",
+		Source: "MD",
 	}.SetLoggerMiddleware()
 }

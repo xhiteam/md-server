@@ -43,6 +43,7 @@ func JWTAuth() gin.HandlerFunc {
 			c.Header("new-expires-at", strconv.FormatInt(newClaims.ExpiresAt, 10))
 		}
 		c.Set("userId", claims.ID)
+		//global.MD_LOG.Info("jwt",zap.Any("userid",claims.ID))
 		c.Next()
 	}
 }

@@ -41,6 +41,7 @@ func Routers() *gin.Engine {
 	}
 	PrivateGroup := Router.Group("")
 	PrivateGroup.Use(middleware.JWTAuth())  //token鉴权
+	global.MD_LOG.Info("use jwt middleware")
 	{
 		systemRouter.InitUserRouter(PrivateGroup)                   // 注册用户路由
 		systemRouter.InitSystemRouter(PrivateGroup)                 // system相关路由
