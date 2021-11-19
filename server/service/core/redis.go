@@ -11,10 +11,7 @@ type RedisService struct {
 }
 var RedisServiceApp=new(RedisService)
 func (redisService *RedisService) CheckAuthority(userId uint,contextId uint,permission table.PermissionType)error{
-	if contextId==0{
-		return false
-	}
-	return true
+
 }
 
 

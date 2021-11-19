@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="05a23636-bce9-4858-a609-6731f7f3f1ba" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/server/utils/des.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README-en.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/api/v1/core/context.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/api/v1/core/context.go" afterDir="false" />
@@ -29,6 +30,8 @@
       <change beforePath="$PROJECT_DIR$/server/router/core/authority.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/router/core/authority.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/router/system/sys_user.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/router/system/sys_user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/service/core/authority.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/core/authority.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/service/core/context.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/core/context.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/service/core/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/core/redis.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/service/system/enter.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/system/enter.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/utils/breakpoint_continue.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/utils/captcha/redis.go" beforeDir="false" />
